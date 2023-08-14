@@ -864,11 +864,9 @@ static xmlDocPtr xmlpost_new_query(struct openconnect_info *vpninfo, const char 
 #endif
 	}
 
-	if (vpninfo->certinfo[1].cert) {
-		node = xmlNewTextChild(capabilities, NULL, XCAST("auth-method"), XCAST("multiple-cert"));
-		if (!node)
-			goto bad;
-	}
+	node = xmlNewTextChild(capabilities, NULL, XCAST("auth-method"), XCAST("multiple-cert"));
+	if (!node)
+		goto bad;
 
 	*rootp = root;
 	return doc;
